@@ -1,0 +1,505 @@
+@import "../_global/variables";
+@import "../_global/easing";
+@import "../_global/raster-grid";
+
+/**
+ * GLOBALS
+ */
+*[data-tooltip]{
+	position: relative;
+	.tooltip {
+		background: $light-color;
+		border: 1px solid $gray-color-light;
+		border-radius: $global-border-radius;
+		color: $dark-color;
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%) translateY(-100%);
+		opacity: 0;
+		pointer-events: none;
+		//
+		font-size: 10px;
+		line-height: 0.7rem;
+		white-space: nowrap;
+		padding: 5px;
+		text-align: left;
+	}
+	&:hover {
+		.tooltip {
+			opacity: 1;
+			pointer-events: all;
+		}
+	}
+}
+
+/**
+ * MENU TOP PANEL LINKS
+ */
+li.stool-admin-panel-menu {
+  a {
+    img {
+      max-height: 50%;
+      vertical-align: sub;
+    }
+  }
+}
+.notice {
+  position: relative;
+}
+
+/**
+ * DASHBOARD WIDGET
+ */
+#_stool_views_widget {
+	.overview-box {
+		margin-bottom: 1rem;
+		h3.ad-title {
+			font-size: 0.75rem;
+			a {
+				float: right;
+			}
+		}
+	}
+}
+/**
+ * ADMIN LIST
+ */
+$status-width: 18px;
+th {
+	&.column-_ads_status {
+		width: 3 * $status-width + 20px;
+	}
+	/*
+	&.column-_ads_startdate {
+		width: 160px;
+	}
+	&.column-_ads_views {
+		width: 160px;
+	}
+	&.column-_ads_positions {
+		width: 160px;
+	}
+	*/
+	&.column-_ads_adimagedesktop,
+	&.column-_ads_adimagemobile {
+		width: 80px;
+	}
+}
+td.column-_ads_adimagedesktop img,
+td.column-_ads_adimagemobile img {
+	background: $light-color;
+	border: 1px solid lighten($gray-color-light, 4%);
+	padding: 2px;
+  max-width: 100%;
+	max-height: 66px;
+}
+
+tr {
+	&.ads-queue {
+		box-shadow: 3px 0px 0px 0px $warning-color inset;
+	}
+	&.ads-active {
+		box-shadow: 3px 0px 0px 0px $success-color inset;
+	}
+	&.ads-clicks-reached,
+	&.ads-views-reached {
+		box-shadow: 3px 0px 0px 0px $warning-color inset;
+	}
+	&.ads-ended {
+		box-shadow: 3px 0px 0px 0px $error-color inset;
+	}
+}
+
+span.ad-clicks {
+	color: $dark-color;
+	display: inline-block;
+	cursor: default;
+}
+
+span.ads-status,
+span.ad-position {
+  background: lighten($gray-color-light, 10%);
+	border-radius: $global-border-radius * 2;
+  margin: 0px 6px 6px 0px;
+	padding: 2px 6px;
+  display: inline-block;
+}
+span.ads-status {
+	width: $status-width;
+	height: $status-width;
+	line-height: $status-width;
+	text-align: center;
+	padding: 0;
+	border: none;
+	border-radius: 100%;
+	cursor: default;
+	img {
+		max-width: 10px;
+	}
+  &.ads-queue {
+		color: $light-color;
+    background: $warning-color;
+  }
+  &.ads-active {
+		color: $light-color;
+    background: $success-color;
+  }
+	&.ads-views-reached, &.ads-clicks-reached {
+		color: $light-color;
+		background: $warning-color;
+	}
+  &.ads-ended {
+		color: $light-color;
+    background: $error-color;
+	}
+	&.post-status {
+		background: transparent;
+		text-align: left;
+		&::before{
+			content: " ";
+			display: inline-block;
+			width: 0.45rem;
+			height: 0.45rem;
+			border-radius: 100%;
+			vertical-align: text-top;
+			background: $gray-color-light;
+		}
+		&.post-publish {
+			&::before {
+				background: $success-color;
+			}
+		}
+		&.post-private {
+			&::before {
+				background: $primary-color;
+			}
+		}
+		&.post-trash {
+			&::before {
+				background: $warning-color;
+			}
+		}
+	}
+}
+span.ad-schedule {
+	span.ad-schedule-from,
+	span.ad-schedule-mid,
+	span.ad-schedule-to {
+		display: inline-block;
+		font-size: .72rem;
+		line-height: .8rem;
+		padding: 3px 4px;
+		margin: 0;
+		margin-bottom: 4px;
+		border-radius: 4px 0px 0px 4px;
+		background: lighten($gray-color-light, 8%);
+	}
+	span.ad-schedule-mid {
+		padding-left: 6px;
+		padding-right: 6px;
+		border-radius: 0px;
+		background: lighten($gray-color-light, 16%);
+	}
+	span.ad-schedule-to {
+		border-radius: 0px 4px 4px 0px;
+		background: lighten($gray-color-light, 8%);
+	}
+	span.ad-schedule-starts-in,
+	span.ad-schedule-ends-in {
+		display: inline-block;
+		span.daydots,
+		span.hourdots {
+			display: inline-block;
+		}
+		span.hourdot,
+		span.daydot {
+			background: $gray-color;
+			display: inline-block;
+			width: 8px;
+			height: 8px;
+			border-radius: 100%;
+			margin-right: 2px;
+			margin-bottom: 2px;
+		}
+		span.hourdot {
+			background: $gray-color;
+			width: 4px;
+			height: 4px;
+		}
+	}
+	span.ad-schedule-starts-in {
+		color: $success-color;
+		span.daydot {
+			background: $warning-color;
+		}
+		span.hourdot {
+			background: $warning-color;
+		}
+	}
+	span.ad-schedule-ends-in {
+		color: $error-color;
+		span.daydot {
+			background: $success-color;
+		}
+		span.hourdot {
+			background: $success-color;
+		}
+	}
+}
+//
+div.ad-meter {
+	position: relative;
+	display: block;
+	background: lighten($gray-color-light, 8%);
+	border-radius: $global-border-radius;
+	//overflow: hidden;
+	height: 6px;
+	margin-bottom: 4px;
+	span.ad-meter-bar {
+		border-radius: $global-border-radius;
+		display: inline-block;
+		background: $primary-color;
+		vertical-align: top;
+		height: 100%;
+		width: 1px;
+		min-width: 1px;
+		max-width: 100%;
+		transition: width .6s ease;
+	}
+	&.with-labels {
+		margin-top: 12px;
+		margin-bottom: 4px;
+		display: block;
+		span.left,
+		span.right {
+			position: absolute;
+			top: -12px;
+			height: 12px;
+			line-height: 12px;
+			font-size: 10px;
+		}
+		span.left {
+			left: 0;
+		}
+		span.right {
+			right: 0;
+		}
+	}
+}
+
+.clearfix {
+	width: 100%;
+	height: 1px;
+	display: block;
+	&::after {
+		display: block;
+		content: "";
+		clear: both;
+	}
+}
+
+/**
+ * ADMIN SINGLE AD
+ */
+._stool-input {
+	//background: lighten($gray-color-light, 18%);
+	border: 1px solid lighten($gray-color-light, 14%);
+	border-radius: $global-border-radius;
+	border-bottom: 2px solid lighten($gray-color-light, 8%);
+	padding: 12px;
+	margin-bottom: 0.8rem;
+	label {
+		display: block;
+		margin-bottom: 4px;
+	}
+	input {
+		background: lighten($gray-color-light,14%);
+		max-width: 100%;
+		width: 100%;
+		height: 1.8rem;
+		border-radius: 3px;
+		margin: 0;
+		box-shadow: none;
+		margin-top: 0px;
+		border: none;
+	}
+	.button{
+		margin-top: 6px;
+	}
+	.button-remove {
+		color: $error-color;
+		margin-top: 6px;
+		text-decoration: none;
+		cursor: pointer;
+	}
+	&.warning-box {
+		//border-width: 1px;
+		border-color: $error-color;
+	}
+	.status-wrapper {
+		display: block;
+		margin-top: 8px;
+	}
+	.ad-meter{
+		height: 8px;
+		.ad-meter-bar {
+			display: inline-block;
+		}
+		&.with-labels {
+			margin-top: 16px;
+		}
+	}
+	.ad-schedule,
+	.status-wrapper {
+		margin-top: 8px;
+		display: block;
+	}
+	.checkbox {
+		background: lighten($gray-color-light,14%);
+		border-radius: $global-border-radius;
+		display: inline-block;
+		position: relative;
+		padding-right: 26px;
+		padding-left: 4px;
+		line-height: 1.4rem;
+		user-select: none;
+		overflow: hidden;
+		margin: 0px 4px 6px 0px;
+		cursor: pointer;
+		input {
+			position: absolute;
+			opacity: 0;
+			height: 0;
+			width: 0;
+			margin: 0;
+			border: none;
+			cursor: pointer;
+		}
+		/* Create a custom checkbox */
+		.checkmark {
+			position: absolute;
+			top: 0;
+			right: 0;
+			height: 100%;
+			width: 22px;
+			background-color: lighten($gray-color-light,6%);
+			&:after {
+				content: " ";
+				position: absolute;
+				right: 7px;
+				top: 4px;
+				width: 4px;
+				height: 8px;
+				opacity: 0;
+				border: solid $light-color;
+				border-width: 0 3px 3px 0;
+				transform: rotate(45deg);
+			}
+		}
+		/* On mouse-over, add a grey background color */
+		&:hover input ~ .checkmark {
+			background-color: $gray-color;
+		}
+		&:hover input ~ .checkmark:after {
+			opacity: 1;
+		}
+		/* When the checkbox is checked, add a blue background */
+		input:checked ~ .checkmark {
+			background-color: $primary-color;
+		}
+		/* Show the checkmark when checked */
+		input:checked ~ .checkmark:after {
+			opacity: 1;
+		}
+	}
+}
+span.input-title {
+	display: block;
+	font-size: 0.9rem;
+	font-weight: 600;
+	margin-bottom: 4px;
+}
+span.small-notice {
+	display: block;
+	font-size: 0.8rem;
+}
+
+.datepicker-panel>ul>li.picked,
+.datepicker-panel>ul>li.picked:hover {
+  background: $warning-color;
+  font-weight: bolder;
+  color: $light-color;
+}
+._stool-admin-thumbnail {
+	background: $light-color;
+	border: 1px solid lighten($gray-color-light, 4%);
+	padding: 2px;
+  max-width: 100%;
+}
+._stool-current-clicks,
+._stool-current-views {
+	display: block;
+}
+._stool-clicks,
+._stool-views {
+	display: block;
+	clear: both;
+	margin-top: 4px;
+	padding-top: 4px;
+}
+
+span.history-chart {
+	border-bottom: $primary-color;
+  display: block;
+	text-align: center;
+  width: 100%;
+  height: 26px;
+	line-height: 26px;
+	span.history-bar {
+		position: relative;
+		display: inline-block;
+		height: 100%;
+		margin-left: 1px;
+		span.history-bar-fill {
+			background: $primary-color;
+			display: inline-block;
+			vertical-align: bottom;
+			min-height: 1px;
+			width: 50%;
+			&.clicks {
+				background: $secondary-color;
+			}
+		}
+		.history-bar-tooltip {
+			background: $light-color;
+			border: 1px solid $gray-color-light;
+			border-radius: $global-border-radius;
+			position: absolute;
+			top: 0;
+			left: 50%;
+			transform: translateX(-50%) translateY(-100%);
+			opacity: 0;
+			pointer-events: none;
+			//
+			font-size: 10px;
+			line-height: 0.7rem;
+			white-space: nowrap;
+			padding: 5px;
+			text-align: left;
+		}
+		&:hover {
+			background: lighten($gray-color-light, 14%);
+			.history-bar-tooltip {
+				opacity: 1;
+				pointer-events: all;
+			}
+			span.history-bar-fill {
+				background: lighten($primary-color,10%);
+				&.clicks {
+					background: lighten($secondary-color, 10%);
+				}
+			}
+		}
+	}
+}

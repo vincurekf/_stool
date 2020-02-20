@@ -1,0 +1,15 @@
+@import "../_global/variables";
+@import "../_global/raster-grid";
+
+/** IMPORTS **/
+@import "../../../node_modules/@mdi/font/scss/materialdesignicons";
+
+/**
+ * DASHBOARD WIDGET
+ */
+#_stool_main_widget {
+	margin-bottom: 1rem;
+	h3 {
+		font-size: 0.75rem;
+	}
+}
