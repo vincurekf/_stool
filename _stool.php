@@ -4,7 +4,7 @@
 Plugin Name: _stool
 Plugin URI: https://vincurekf.cz/stool
 Description: Simple Tools that bring custom post types, cached queries, metaboxes and AJAX capabilities to your theme.
-Version: 1.0.3
+Version: 1.0.4
 Author: Filip Vincůrek
 Author URI: https://vincurekf.cz
 
@@ -35,7 +35,7 @@ SOFTWARE.
  **************************************************************************/
 
 // Plugin Version
-define('_STOOL_VERSION', '1.0.3');
+define('_STOOL_VERSION', '1.0.4');
 define('_STOOL_TESTEDWP', '5.4.2');
 
 // If this file is called directly, abort.
