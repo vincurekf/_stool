@@ -40,8 +40,7 @@ namespace _stool {
 				wp_enqueue_style('wp-color-picker');
 				wp_enqueue_script('wp-color-picker');
 				//
-				wp_enqueue_script('_stool-admin-post-libs', _STOOL_URI . 'assets/js/admin-post-libs.min.js', array('jquery'), _STOOL_VERSION, true);
-				wp_enqueue_script('_stool-admin-post', _STOOL_URI . 'assets/js/admin-post.min.js', array('_stool-admin-post-libs'), _STOOL_VERSION, true);
+				wp_enqueue_script('_stool-admin-post', _STOOL_URI . 'assets/js/admin-post.js', array('jquery'), _STOOL_VERSION, true);
 				wp_enqueue_style('_stool-admin-post', _STOOL_URI . 'assets/css/admin-post.css', array(), _STOOL_VERSION);
 				//
 				wp_localize_script('_stool-admin-post', '_stool_ajax', array(

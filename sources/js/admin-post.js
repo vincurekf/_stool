@@ -1,3 +1,5 @@
+require('flatpickr');
+
 (function ($) {
 
 	console.log('_stool::admin-post');
@@ -103,10 +105,6 @@
 			//
 		});
 	};
-
-	if ($('._stool_select').length > 0) {
-		$('._stool_select').selectize({ create: false });
-	}
 
 	if ($('._stool-component > input[type="datetime-local"]').length > 0 ){
 		//

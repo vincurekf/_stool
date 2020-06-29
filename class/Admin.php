@@ -33,8 +33,7 @@ namespace _stool {
 				wp_enqueue_style('thickbox');
 			}
 			//
-			wp_enqueue_script('_stool-admin-libs', _STOOL_URI . 'assets/js/admin-libs.min.js', array('jquery'), _STOOL_VERSION, true);
-			wp_enqueue_script('_stool-admin', _STOOL_URI . 'assets/js/admin.min.js', array('_stool-admin-libs'), _STOOL_VERSION, true);
+			wp_enqueue_script('_stool-admin', _STOOL_URI . 'assets/js/admin.js', array('jquery'), _STOOL_VERSION, true);
 			wp_enqueue_style('_stool-admin', _STOOL_URI . 'assets/css/admin.css', array(), _STOOL_VERSION);
 			//
 			wp_localize_script('_stool-admin', '_stool_ajax', array('ajax_url' => admin_url('admin-ajax.php')));

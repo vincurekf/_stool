@@ -1,3 +1,7 @@
+require('angular');
+require('ng-sortable');
+var _ = require('underscore');
+
 (function ($){
 
 	var _tinyMCE;

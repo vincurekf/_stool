@@ -20,7 +20,7 @@ namespace _stool {
 			//
 			if ('dashboard' == $current_screen->base) {
 				wp_enqueue_script('jquery');
-				wp_enqueue_script('_stool-dashboard', _STOOL_URI . 'assets/js/dashboard.min.js', array('jquery'), _STOOL_VERSION, true);
+				wp_enqueue_script('_stool-dashboard', _STOOL_URI . 'assets/js/dashboard.js', array('jquery'), _STOOL_VERSION, true);
 				wp_enqueue_style('_stool-dashboard', _STOOL_URI . 'assets/css/dashboard.css', array(), _STOOL_VERSION);
 			}
 		}
@@ -43,6 +43,8 @@ namespace _stool {
 			//
 			$dynamicFields = json_decode(get_option('_stool_posttypes', null), true);
 			//
+			do_action('_stool_dashboard_render_widget');
+			//
 			if (!is_null(Posts::$types) && !empty(Posts::$types)) {
 				$ext = count(Posts::$types) > 1 ? "s" : "";
 				echo "<strong>" . count(Posts::$types) . "</strong> custom post type" . $ext . ":";
@@ -52,8 +54,6 @@ namespace _stool {
 				}
 				echo "</ul>";
 			}
-			//
-			do_action('_stool_dashboard_render_widget');
 			//
 			echo '<div style="font-size:11px; text-align:right; border-top:1px dotted #ddd; margin-top:4px;"><i class="mdi mdi-code-tags"> Version: ' . _STOOL_VERSION . '</i></div>';
 		}

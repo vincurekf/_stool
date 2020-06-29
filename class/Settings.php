@@ -48,8 +48,7 @@ namespace _stool {
 				wp_enqueue_script('jquery');
 				wp_enqueue_script('jquery-form');
 				wp_enqueue_style('wp-color-picker');
-				wp_enqueue_script('_stool-settings-libs', _STOOL_URI . 'assets/js/settings-libs.min.js', array('jquery'), _STOOL_VERSION, true);
-				wp_enqueue_script('_stool-settings', _STOOL_URI . 'assets/js/settings.min.js', array('_stool-settings-libs', 'wp-color-picker'), _STOOL_VERSION, true);
+				wp_enqueue_script('_stool-settings', _STOOL_URI . 'assets/js/settings.js', array('jquery', 'wp-color-picker'), _STOOL_VERSION, true);
 				wp_enqueue_style('_stool-settings', _STOOL_URI . 'assets/css/settings.css', array('wp-color-picker'), _STOOL_VERSION);
 				//
 				wp_localize_script('_stool-settings', '_stool_ajax', array(
