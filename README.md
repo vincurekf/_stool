@@ -56,7 +56,7 @@ For example, `20.02.2020` is saved as `1582156800`
 
 ```php
 _stool\Customizer::addSection(array(
-	"key" => "my_cestion",
+	"key" => "my_section",
 	"title" => "My Section",
 	"fields" => array(
 		array(
@@ -83,6 +83,9 @@ namespace _stool {
 	class MyAjax extends Ajax {
 		public static function test(){
 			$req = self::data();
+			//
+			// generate your response data
+			//
 			return self::SuccessResponse( $req );
 		}
 	}
@@ -90,26 +93,26 @@ namespace _stool {
 	Ajax::add( "_stool\MyAjax", "test" );
 }
 ```
-So in this case, call the Ajax like so:
+
+To be able to use ajax in your theme you must pass in the ajax url:
+```php
+wp_enqueue_script('your-script', get_template_directory_uri() . 'your-script.js', array(), time(), true);
+wp_localize_script('your-script', 'ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
+```
+
+So in this case, the Ajax call would be:
 ```js
-$http({
-  method: "POST", //GET
-  url: _stool_ajax.ajax_url,
-  params: {
-    action: "_stool_test"
-  },
-  // Add POST data
-  data: {
-    param1: "param 1 value"
-  }
-}).then(
-  function successCallback(response) {
-    console.log(response);
-  },
-  function errorCallback(response) {
-    console.error(response);
-  }
-);
+$.ajax({
+	type: "POST",
+	dataType: "json",
+	url: ajax_object.ajax_url,
+	data: {
+		action: "_stool_test"
+	},
+	success: function(response) {
+		alert(response);
+	}
+});
 ```
 
 ## Get Posts
@@ -164,6 +167,9 @@ $my_field = _stool\Posts::meta('my_field',1);
 ```
 
 ## Changelog
+
+**v1.0.2**
+- Added option for automatic cache celaning on post save
 
 **v1.0.1**
 - Code cleanup

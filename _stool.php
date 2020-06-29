@@ -4,7 +4,7 @@
 Plugin Name: _stool
 Plugin URI: https://vincurekf.cz/stool
 Description: Simple Tools that bring custom post types, cached queries, metaboxes and AJAX capabilities to your theme.
-Version: 1.0.1
+Version: 1.0.2
 Author: Filip Vincůrek
 Author URI: https://vincurekf.cz
 
@@ -35,8 +35,8 @@ SOFTWARE.
  **************************************************************************/
 
 // Plugin Version
-define('_STOOL_VERSION', '1.0.1');
-define('_STOOL_TESTEDWP', '5.3.2');
+define('_STOOL_VERSION', '1.0.2');
+define('_STOOL_TESTEDWP', '5.4.2');
 
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
@@ -55,6 +55,8 @@ define('_STOOL_DISABLE_COMMENTS', get_option('_stool_disable_comments'));
 define('_STOOL_SANITIZE_FILENAMES', get_option('_stool_sanitize_filenames'));
 // Is current session admins
 define('_STOOL_IS_ADMIN', is_admin());
+// Is current session admins
+define('_STOOL_PURGE_CACHE', get_option('_stool_purge_cache'));
 
 if (_STOOL_USECACHE) {
 	$_stool_transient_expiry = get_option('_stool_transient_expiry');
@@ -119,6 +121,12 @@ if (_STOOL_IS_ADMIN) {
 				),
 				"default" => 15,
 				"condition" => "form.data._stool_transient_use === true"
+			),
+			"_stool_purge_cache" => array(
+				"label" => "Purge cache upon save",
+				"tooltip" => "Purge internal cache upon post save",
+				"type" => "checkbox",
+				"default" => null
 			),
 			"_stool_disable_comments" => array(
 				"label" => "Completely disbale comments on site",

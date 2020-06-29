@@ -15,7 +15,6 @@ namespace _stool {
 		{
 			add_action('wp_enqueue_scripts', array('_stool\Core', 'registerScripts'));
 			add_action('widgets_init', array('_stool\Core', 'widgetsInit'));
-			add_action('wp_head', array('_stool\Core', 'wpHead'), 100);
 		}
 
 		/**
@@ -23,11 +22,10 @@ namespace _stool {
 		 */
 		public static function registerScripts()
 		{
-			//
-			wp_enqueue_script('_stool-public', _STOOL_URI . 'assets/js/public.min.js', array(), _STOOL_VERSION, true);
-			wp_localize_script('_stool-public', '_stool_ajax', array('ajax_url' => admin_url('admin-ajax.php')));
-			add_action('wp_footer', array('_stool\Tools', 'showDebugger'));
-			//
+			if( is_user_logged_in() && current_user_can('administrator') ) {
+				add_action('wp_head', array('_stool\Core', 'wpHead'), 100);
+				add_action('wp_footer', array('_stool\Tools', 'showDebugger'));
+			}
 		}
 
 		/**

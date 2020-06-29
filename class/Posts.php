@@ -23,6 +23,9 @@ namespace _stool {
 			foreach (self::$types as $key => $type) {
 				add_filter('manage_' . $key . '_posts_columns', array('_stool\Posts', 'tableHead'));
 			}
+			if( _STOOL_PURGE_CACHE ){
+				add_action('save_post', array('_stool\Posts', 'autoPurgeCache'));
+			}
 		}
 
 		public static function registerScripts()
@@ -312,7 +315,21 @@ namespace _stool {
 			return $_stool_posts;
 		}
 
-		public static function purgeCache()
+		public static function autoPurgeCache( $post_id )
+		{
+			if ( wp_is_post_revision( $post_id ) ) {
+				return;
+			}
+			//
+			global $wpdb;
+			//
+			$sql_qery = "DELETE FROM wp_options WHERE option_name LIKE ('%" . self::$transient_prefix . "%')";
+			$result = $wpdb->get_results($sql_qery);
+			//
+			wp_cache_flush();
+		}
+
+		public static function purgeCache( $post_id = null )
 		{
 			global $wpdb;
 			//
