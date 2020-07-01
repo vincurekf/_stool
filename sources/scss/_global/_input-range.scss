@@ -1,0 +1,100 @@
+//colors
+$black: $dark-color;
+$color_track: $gray-color-lighter;
+$color_thumb: $primary-color;
+$color_thumb_border: darken($color_thumb,6%);
+
+$track_height: 5px;
+$thumb-border-size: 0px;
+$thumb-height: 14px;
+$thumb-width: 14px;
+
+input[type=range] {
+	height: 22px;
+	margin: 10px 0;
+	width: 100%;
+	&:focus {
+		outline: none;
+	}
+	&:focus::-webkit-slider-runnable-track {
+		background: $color_track;
+	}
+	&:focus::-ms-fill-lower {
+		background: $color_track;
+	}
+	&:focus::-ms-fill-upper {
+		background: $color_track;
+	}
+}
+input[type=range]::-webkit-slider-runnable-track {
+	width: 100%;
+	height: $track_height;
+	box-shadow: 0 0 0 $black;
+	background: $color_track;
+	border: 0 solid $black;
+	border-radius: 5px;
+	cursor: pointer;
+	animate: 0.2s;
+}
+input[type=range]::-webkit-slider-thumb {
+	//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+	box-shadow: 0 0 1px $black;
+	background: $color_thumb;
+	border: $thumb-border-size solid $color_thumb_border;
+	height: $thumb-height;
+	width: $thumb-width;
+	margin-top: $thumb-height/2;
+	border-radius: 50px;
+	cursor: pointer;
+}
+input[type=range]::-moz-range-track {
+	width: 100%;
+	height: $track_height;
+	box-shadow: 0 0 0 $black;
+	background: $color_track;
+	border: 0 solid $black;
+	border-radius: 5px;
+	cursor: pointer;
+	animate: 0.2s;
+}
+input[type=range]::-moz-range-thumb {
+	//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+	box-shadow: 0 0 1px $black;
+	background: $color_thumb;
+	border: $thumb-border-size solid $color_thumb_border;
+	height: $thumb-height;
+	width: $thumb-width;
+	border-radius: 50px;
+	cursor: pointer;
+}
+input[type=range]::-ms-track {
+	width: 100%;
+	height: $track_height;
+	cursor: pointer;
+	animate: 0.2s;
+	background: transparent;
+	border-color: transparent;
+	color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+	background: $color_track;
+	box-shadow: 0 0 0 $black;
+	border: 0 solid $black;
+	border-radius: 10px;
+}
+input[type=range]::-ms-fill-upper {
+	background: $color_track;
+	box-shadow: 0 0 0 $black;
+	border: 0 solid $black;
+	border-radius: 10px;
+}
+input[type=range]::-ms-thumb {
+	margin-top: 1px;
+	border: $thumb-border-size solid $color_thumb_border;
+	height: $thumb-height;
+	width: $thumb-width;
+	background: $color_thumb;
+	box-shadow: 0 0 1px $black;
+	border-radius: 50px;
+	cursor: pointer;
+}

@@ -1,5 +1,5 @@
-<grid columns=12>
-  <c span=row>
+<r-grid columns=12>
+  <r-cell span=row>
     <label class="_stool-label" for="<?php echo $id; ?>" <?php echo $tooltip . $condition; ?>>
     <span class="_stool-label-title"><?php echo $label; ?></span>
     <?php
@@ -7,5 +7,5 @@
       wp_editor($value, $id, $settings);
     ?>
     </label>
-  </c>
-</grid>
+  </r-cell>
+</r-grid>

@@ -18,13 +18,20 @@ namespace _stool {
 
 		public static function init()
 		{
+			//
 			add_action('init', array('_stool\Posts', 'registerTypes'));
 			add_action('admin_enqueue_scripts', array('_stool\Posts', 'registerScripts'));
+			//
 			foreach (self::$types as $key => $type) {
 				add_filter('manage_' . $key . '_posts_columns', array('_stool\Posts', 'tableHead'));
 			}
+			//
 			if( _STOOL_PURGE_CACHE ){
 				add_action('save_post', array('_stool\Posts', 'autoPurgeCache'));
+			}
+			//
+			if( _STOOL_TRACK_POSTS ){
+				add_action('the_post', array('_stool\Posts', 'addPostToIgnored'));
 			}
 		}
 
@@ -422,6 +429,10 @@ namespace _stool {
 				array_push($IDs, $post->ID);
 			}
 			return $IDs;
+		}
+
+		public static function addPostToIgnored($post = null){
+			self::exclude($post->ID);
 		}
 	}
 }

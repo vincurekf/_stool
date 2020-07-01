@@ -1,8 +1,9 @@
 @import "_global/variables";
 @import "_global/easing";
-@import "_global/raster-grid";
+@import "_global/input-range";
 
 /** IMPORTS **/
+@import "../../node_modules/raster-sass/raster-grid";
 @import "../../node_modules/@mdi/font/scss/materialdesignicons";
 @import "../../node_modules/ng-sortable/dist/ng-sortable";
 
@@ -358,8 +359,8 @@
 			border: none;
 			border-bottom: 1px solid $gray-color-lighter;
 			vertical-align: bottom;
-			display: inline-block;
-			width: auto;
+			display: block;
+			width: 100%;
 			box-shadow: none;
 			font-size: 0.9rem;
 			font-weight: 800;
@@ -368,7 +369,7 @@
 			margin: 0;
 		}
 		._stool-customizer-section-select {
-			width: calc(100% - 6.6rem);
+			//width: calc(100% - 6.6rem);
 		}
 	}
 	._stool-customizer-section-fields {

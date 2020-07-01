@@ -27,16 +27,20 @@ namespace _stool {
 			//
 			wp_enqueue_script('jquery');
 			//
+			wp_enqueue_script('_stool-admin', _STOOL_URI . 'assets/js/admin.js', array('jquery'), _STOOL_VERSION, true);
+			wp_enqueue_style('_stool-admin', _STOOL_URI . 'assets/css/admin.css', array(), _STOOL_VERSION);
+			//
+			wp_localize_script('_stool-admin', '_stool_ajax', array('ajax_url' => admin_url('admin-ajax.php')));
+			//
 			if (in_array($current_screen->base, array('post', 'edit', 'page'))) {
 				wp_enqueue_script('media-upload');
 				wp_enqueue_script('thickbox');
 				wp_enqueue_style('thickbox');
 			}
 			//
-			wp_enqueue_script('_stool-admin', _STOOL_URI . 'assets/js/admin.js', array('jquery'), _STOOL_VERSION, true);
-			wp_enqueue_style('_stool-admin', _STOOL_URI . 'assets/css/admin.css', array(), _STOOL_VERSION);
-			//
-			wp_localize_script('_stool-admin', '_stool_ajax', array('ajax_url' => admin_url('admin-ajax.php')));
+			if (in_array($current_screen->base, array('widgets','customize'))) {
+				wp_enqueue_style('_stool-admin-widgets', _STOOL_URI . 'assets/css/widgets.css', array(), _STOOL_VERSION);
+			}
 			//
 		}
 

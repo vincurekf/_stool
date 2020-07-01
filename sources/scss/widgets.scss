@@ -1,0 +1,27 @@
+@import "_global/variables";
+
+._stool-posts-widget-config {
+	r-grid {
+		background: lighten( $gray-color-light, 15% );
+		padding: 0.1rem 0.3rem;
+		margin-bottom: 0.5rem;
+		margin-top: 0.5rem;
+    //
+    border: 1px solid lighten($gray-color-light,10%);
+    border-top-width: 3px;
+		border-radius: 0.3rem;
+    //
+    &.danger {
+      border: 1px solid desaturate(lighten($error-color,20%), 20%);
+      border-top-width: 3px;
+    }
+	}
+	r-cell {
+		padding: 0.1rem;
+		line-height: 1.6rem;
+		position: relative;
+  }
+  p {
+    margin: .2rem 0;
+  }
+}

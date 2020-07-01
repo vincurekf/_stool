@@ -105,8 +105,8 @@ namespace _stool {
         <form id="_stool-settings-form" method="post" action="options.php" ng-submit="form.submit($event)">
 
           <header>
-            <grid columns=12>
-              <c span=row>
+            <r-grid columns=12>
+              <r-cell span=row>
                 <img class="_stool-theme-logo" src="<?php echo _STOOL_URI; ?>/assets/img/logo_symbol_white.svg">
                 <h1>_stool</h1>
                 <div class="_stool-submit-controls">
@@ -119,8 +119,8 @@ namespace _stool {
                   </p>
                   <?php submit_button(); ?>
                 </div>
-              </c>
-            </grid>
+              </r-cell>
+            </r-grid>
           </header>
 
           <section class="_stool-settings-wrapper">
@@ -140,8 +140,8 @@ namespace _stool {
           </section>
 
           <footer>
-            <grid columns=12>
-              <c span=row>
+            <r-grid columns=12>
+              <r-cell span=row>
                 <img class="_stool-theme-logo" src="<?php echo _STOOL_URI; ?>/assets/img/logo_symbol_black.svg">
                 <div class="_stool-submit-controls">
                   <span class="_stool-notice saving" ng-if="form.loading">Saving...<i class="mdi mdi-loading mdi-spin"></i></span>
@@ -153,8 +153,8 @@ namespace _stool {
                   </p>
                   <?php submit_button(); ?>
                 </div>
-              </c>
-            </grid>
+              </r-cell>
+            </r-grid>
           </footer>
 
         </form>
@@ -189,13 +189,13 @@ namespace _stool {
 				} elseif ('tinymce' == $type) {
 					include _STOOL_ROOT . '/views/settings/tinymce.php';
 				} else {
-					echo '<grid columns=12>';
-					echo '<c span=3>';
+					echo '<r-grid columns=12>';
+					echo '<r-cell span=3>';
 					echo '<label class="_stool-label" for="' . $id . '"' . $tooltip . '>';
 					echo '<span class="_stool-label-title">' . $label . '</span>';
 					echo '</label>';
-					echo '</c>';
-					echo '<c span=9>';
+					echo '</r-cell>';
+					echo '<r-cell span=9>';
 					echo '<div class="_stool-input-wrapper _stool-input-' . $type . '"' . $tooltip . '>';
 					if ('text' == $type) {
 						echo '<input id="' . $id . '" class="_stool-input" type="text" name="' . $id . '" value="' . $value . '" ng-model="form.data.' . $id . '" ng-init="form.data.' . $id . '=\'' . $value . '\'" />';
@@ -250,8 +250,8 @@ namespace _stool {
 						echo '<span class="_stool-range-value">{{ form.data.' . $id . ' }}&nbsp;' . $range_unit . '</span>';
 					}
 					echo '</div>';
-					echo '</c>';
-					echo '</grid>';
+					echo '</r-cell>';
+					echo '</r-grid>';
 				}
 				echo '</div>';
 			}
@@ -278,17 +278,17 @@ namespace _stool {
 					// Render panel fields
 					echo '<div class="tabs-panel" id="panel-' . $key . '" ng-class="{\'active\':tabs.activeTab === \'panel-' . $key . '\'}">';
 					//
-					echo '<grid columns=12>';
-					echo '<c span=row><span class="_stool-section-title">' . $panel["title"] . '</span></c>';
-					echo '<c span=' . (isset($panel["sidebar"]) ? '8' : '12') . '>';
+					echo '<r-grid columns=12>';
+					echo '<r-cell span=row><span class="_stool-section-title">' . $panel["title"] . '</span></r-cell>';
+					echo '<r-cell span=' . (isset($panel["sidebar"]) ? '8' : '12') . '>';
 					foreach ($panel["fields"] as $fieldkey => $field) {
 						self::renderInput($fieldkey, $field);
 					}
-					echo '</c>';
+					echo '</r-cell>';
 					if (isset($panel["sidebar"])) {
-						echo '<c span=4>' . $panel["sidebar"] . '</c>';
+						echo '<r-cell span=4>' . $panel["sidebar"] . '</r-cell>';
 					}
-					echo '</grid>';
+					echo '</r-grid>';
 					//
 					echo '</div>';
 				}

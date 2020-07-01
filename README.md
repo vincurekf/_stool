@@ -168,6 +168,13 @@ $my_field = _stool\Posts::meta('my_field',1);
 
 ## Changelog
 
+**v1.0.6**
+- Updated posts widget setting styles
+- Option to keep track of displayed posts to ignore them in widget automatically
+
+**v1.0.5**
+- Better input[range] styles
+
 **v1.0.2**
 - Added option for automatic cache celaning on post save
 

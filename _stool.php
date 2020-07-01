@@ -4,7 +4,7 @@
 Plugin Name: _stool
 Plugin URI: https://vincurekf.cz/stool
 Description: Simple Tools that bring custom post types, cached queries, metaboxes and AJAX capabilities to your theme.
-Version: 1.0.4
+Version: 1.0.6
 Author: Filip Vincůrek
 Author URI: https://vincurekf.cz
 
@@ -35,7 +35,7 @@ SOFTWARE.
  **************************************************************************/
 
 // Plugin Version
-define('_STOOL_VERSION', '1.0.4');
+define('_STOOL_VERSION', '1.0.6');
 define('_STOOL_TESTEDWP', '5.4.2');
 
 // If this file is called directly, abort.
@@ -55,8 +55,10 @@ define('_STOOL_DISABLE_COMMENTS', get_option('_stool_disable_comments'));
 define('_STOOL_SANITIZE_FILENAMES', get_option('_stool_sanitize_filenames'));
 // Is current session admins
 define('_STOOL_IS_ADMIN', is_admin());
-// Is current session admins
+// Purge cache on post save
 define('_STOOL_PURGE_CACHE', get_option('_stool_purge_cache'));
+// Keep track of displayed posts
+define('_STOOL_TRACK_POSTS', get_option('_stool_keep_track_of_post_ids'));
 
 if (_STOOL_USECACHE) {
 	$_stool_transient_expiry = get_option('_stool_transient_expiry');
@@ -137,6 +139,12 @@ if (_STOOL_IS_ADMIN) {
 			"_stool_sanitize_filenames" => array(
 				"label" => "Sanitize uploaded file names",
 				"tooltip" => "Checking this will make sure that all special and illegal characters are removed from uploaded file names.",
+				"type" => "checkbox",
+				"default" => null
+			),
+			"_stool_keep_track_of_post_ids" => array(
+				"label" => "Keep track of displayed posts",
+				"tooltip" => "Adds hook to the_post() action to keep track of displayed posts to ignore them later (in posts widget for example)",
 				"type" => "checkbox",
 				"default" => null
 			)

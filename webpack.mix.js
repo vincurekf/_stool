@@ -24,4 +24,5 @@ mix
 .sass('sources/scss/admin.scss', 'assets/css')
 .sass('sources/scss/admin-post.scss', 'assets/css')
 .sass('sources/scss/dashboard.scss', 'assets/css')
+.sass('sources/scss/widgets.scss', 'assets/css')
 .sass('sources/scss/settings.scss', 'assets/css');
