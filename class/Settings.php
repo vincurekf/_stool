@@ -67,7 +67,7 @@ namespace _stool {
 				'administrator',
 				'_stool-settings',
 				array('_stool\Settings', '_stool_settings_render'),
-				'data:image/svg+xml;base64,' . base64_encode(file_get_contents(_STOOL_URI . 'assets/img/logo_symbol_white.svg')),
+				'data:image/svg+xml;base64,' . base64_encode(file_get_contents(_STOOL_ROOT . '/assets/img/logo_symbol_white.svg')),
 				90
 			);
 			//call register settings function

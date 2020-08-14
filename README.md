@@ -168,6 +168,9 @@ $my_field = _stool\Posts::meta('my_field',1);
 
 ## Changelog
 
+**v1.0.7**
+- Fixed icon load on https sites with invalid certificate
+
 **v1.0.6**
 - Updated posts widget setting styles
 - Option to keep track of displayed posts to ignore them in widget automatically
