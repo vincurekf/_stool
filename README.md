@@ -168,6 +168,9 @@ $my_field = _stool\Posts::meta('my_field',1);
 
 ## Changelog
 
+**v1.0.8**
+- Fixed customizer and post type deletion bug
+
 **v1.0.7**
 - Fixed icon load on https sites with invalid certificate
 

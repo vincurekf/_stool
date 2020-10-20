@@ -101,7 +101,8 @@ require('flatpickr');
 			$hndle.addClass('_stool-component-hndle');
 			$parent.addClass('_stool-component-postbox');
 			//
-			document.getElementById($parent.attr('id') + '_hndle').insertAdjacentHTML("afterbegin", '<img class="_stool-component-icon" src="' + $iconurl + '"></img>');
+			var $imagecontainer = document.getElementById($parent.attr('id') + '_hndle');
+			if( $imagecontainer ) $imagecontainer.insertAdjacentHTML("afterbegin", '<img class="_stool-component-icon" src="' + $iconurl + '"></img>');
 			//
 		});
 	};

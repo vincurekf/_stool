@@ -276,13 +276,11 @@ var _ = require('underscore');
 				console.log('section',section);
 			},
 			removeSection: function(section){
-				var sections = angular.copy(section.sections);
-				var filtered = _.reject(this.sections, function(val){
+				var sections = angular.copy(this.sections);
+				var filtered = _.reject(sections, function(val){
 					return val.key === section.key;
 				});
 				this.sections = filtered;
-				//
-				console.log('this.sections',this.sections);
 			},
 			removeField: function(section,field){
 				var fields = angular.copy(section.fields);
@@ -586,13 +584,14 @@ var _ = require('underscore');
 				console.log('section',section);
 			},
 			removeSection: function(section){
-				var sections = angular.copy(section.sections);
-				var filtered = _.reject(this.sections, function(val){
-					return val.key === section.key;
+				//
+				var sections = angular.copy(this.sections);
+				var filtered = _.reject(sections, function(val){
+					return val.slug === section.slug;
 				});
+				console.log('filtered',filtered);
 				this.sections = filtered;
 				//
-				console.log('this.sections',this.sections);
 			},
 			removeField: function(section,field){
 				var metaboxes = angular.copy(section.metaboxes);
